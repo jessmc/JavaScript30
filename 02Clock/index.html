@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS + CSS Clock</title>
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Glegoo" rel="stylesheet">
+</head>
+
+<body>
+	<div class="clock">
+		<div class="clock-face">
+			<div class="hand hour-hand"></div>
+			<div class="hand min-hand"></div>
+			<div class="hand second-hand"></div>
+		</div>
+	</div>
+
+	<footer>
+		<h5>This clock project created by <a href="http://jessicaciarel.li">Jessica Ciarelli</a> is Part 2 of a <a href="https://javascript30.com">30 Day JavaScript Series created by Wes Bos</a>
+		<br>Background image credit: <a href="https://unsplash.com/@rayben">Ben Regali</a>
+		</h5>
+	</footer>
+
+
+<script>
+const secondHand = document.querySelector('.second-hand');
+const minuteHand = document.querySelector('.min-hand');
+const hourHand = document.querySelector('.hour-hand');
+
+
+function setDate() {
+	const now = new Date();
+
+	const seconds = now.getSeconds();
+	const secondsDegrees = ((seconds / 60) * 360) + 90;
+	secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+	
+	const minutes = now.getMinutes();
+	const minutesDegrees = ((minutes / 60) * 360) + 90;
+	minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+
+	const hours = now.getHours();
+	const hoursDegrees = ((hours / 12) * 360) + 90;
+	hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+}
+
+setInterval(setDate, 1000);
+
+</script>
+
+
+</body>
+
+</html>
